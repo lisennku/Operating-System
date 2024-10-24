@@ -43,17 +43,22 @@ S4: w=c+l;
 > &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;供以操作系统访问进程使用，操作系统为每个进程分配的标识符，具有唯一性  
 > &emsp;&emsp;2. 处理机状态  
 > &emsp;&emsp;&emsp;&emsp;- 通用寄存器  
-> &emsp;&emsp;&emsp;&emsp;- 指令计数器  
-> &emsp;&emsp;&emsp;&emsp;- 程序状态字
-> &emsp;&emsp;&emsp;&emsp;- 用户栈指针
+> &emsp;&emsp;&emsp;&emsp;- 指令计数器   
+> &emsp;&emsp;&emsp;&emsp;- 程序状态字  
+> &emsp;&emsp;&emsp;&emsp;- 用户栈指针  
 > &emsp;&emsp;3. 进程调度信息  
-> &emsp;&emsp;&emsp;&emsp;用于OS调度时的调度相关的信息
-> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程状态
-> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程优先级
-> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程调度的其他信息，与所使用的算法相关
-> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 事件，将进程由执行转为阻塞所等待发生的事件
+> &emsp;&emsp;&emsp;&emsp;用于OS调度时的调度相关的信息  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程状态  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程优先级  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程调度的其他信息，与所使用的算法相关  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 事件，将进程由执行转为阻塞所等待发生的事件  
 > &emsp;&emsp;4. 进程控制信息  
-> 
+> &emsp;&emsp;&emsp;&emsp;用于进程控制所必须的信息  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 程序和数据，在内外存的地址  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 进程同步和控制机制  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 资源清单  
+> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- 链接指针  
+
 9.  进程控制块的组织方式有哪几种？
 10. 何谓操作系统内核？内核的主要功能是什么？
 1 1.试说明进程在三个基本状态之问转换的典型原因．
