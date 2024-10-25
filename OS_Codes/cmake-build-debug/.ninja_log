@@ -1,2 +1,6 @@
 # ninja log v6
 198	443	7515359230393651	OS_Codes.exe	771325775af9855
+1	231	7515532895088824	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
+232	599	7515532897385199	OS_Codes.exe	4bab5c3499a66b6c
+4	201	7515532992861025	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
+202	431	7515532994837616	OS_Codes.exe	4bab5c3499a66b6c

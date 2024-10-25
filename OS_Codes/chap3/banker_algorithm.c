@@ -51,6 +51,8 @@
 #include <string.h>
 
 #define BLANK ' '
+#define P 5
+#define R 3
 
 typedef struct {
 	int res_nums;
@@ -83,6 +85,10 @@ void init_banker(Banker * b, int p, int r, int * init_res) {
 }
 
 void create_T0_environment(Banker * b, int (*max_res)[b->res_nums], int (*cur_allocate)[b->res_nums]) {
+
+	memcpy(b->max, max_res, sizeof(int) * b->pro_nums * b->res_nums);
+	memcpy(b->allocate, cur_allocate, sizeof(int) * b->pro_nums * b->res_nums);
+
 	for(int i = 0; i < b->pro_nums; i++)
 		for(int j = 0; j < b->res_nums; j++)
 			b->need[i][j] = b->max[i][j] - b->allocate[i][j];
@@ -127,18 +133,15 @@ void display_matrix(Banker b, char mat_typ) {
 }
 
 int main() {
-	const int p = 5;
-	const int r = 3;
-
 	int init_res[] = {10, 5, 7};
-	int max[p][r] = {
+	int max[P][R] = {
 		{7, 5, 3},
 		{3, 2, 2},
 		{9, 0, 2},
 		{2, 2, 2},
 		{4, 3, 3}
 	};
-	int allocate[p][r] = {
+	int allocate[P][R] = {
 		{0, 1, 0},
 		{2, 0, 0},
 		{3, 0, 2},
@@ -147,7 +150,7 @@ int main() {
 	};
 
 	Banker b;
-	init_banker(&b, p, r, init_res);
+	init_banker(&b, P, R, init_res);
 	create_T0_environment(&b, max, allocate);
-
+	display_matrix(b, 'm');
 }
