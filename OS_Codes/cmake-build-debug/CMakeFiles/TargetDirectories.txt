@@ -1,3 +1,3 @@
-D:/408/os/Operating-System/OS_Codes/cmake-build-debug/CMakeFiles/OS_Codes.dir
-D:/408/os/Operating-System/OS_Codes/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/408/os/Operating-System/OS_Codes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/lisen/CLionProjects/Operating-System/OS_Codes/cmake-build-debug/CMakeFiles/OS_Codes.dir
+C:/Users/lisen/CLionProjects/Operating-System/OS_Codes/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lisen/CLionProjects/Operating-System/OS_Codes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
