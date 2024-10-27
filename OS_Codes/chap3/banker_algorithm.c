@@ -63,68 +63,110 @@ typedef struct {
 	int ** need;
 }Banker;
 
-void init_banker(Banker * b, int p, int r, int * init_res) {
+void init_banker(Banker * b, int p, int r) {
 
 	b->pro_nums = p;
 	b->res_nums = r;
 
 	b->available = calloc(r, sizeof(int));
-	memcpy(b->available, init_res, r * sizeof(int));
 
 	b->max = calloc(p, sizeof(int *));
-	for(int i = 0; i < r; i++)
+	for(int i = 0; i < p; i++)
 		b->max[i] = calloc(r, sizeof(int));
 
 	b->allocate = calloc(p, sizeof(int *));
-	for(int i = 0; i < r; i++)
+	for(int i = 0; i < p; i++)
 		b->allocate[i] = calloc(r, sizeof(int));
 
 	b->need = calloc(p, sizeof(int *));
-	for(int i = 0; i < r; i++)
+	for(int i = 0; i < p; i++)
 		b->need[i] = calloc(r, sizeof(int));
 }
 
-void create_T0_environment(Banker * b, int (*max_res)[b->res_nums], int (*cur_allocate)[b->res_nums]) {
+void create_T0_env(Banker * b) {
+	int t_available[R] = {3, 3, 2};
 
-	memcpy(b->max, max_res, sizeof(int) * b->pro_nums * b->res_nums);
-	memcpy(b->allocate, cur_allocate, sizeof(int) * b->pro_nums * b->res_nums);
+	int t_max[P][R] = {
+		{7, 5, 3},
+		{3, 2, 2},
+		{9, 0, 2},
+		{2, 2, 2},
+		{4, 3, 3}
+	};
+	int t_allocate[P][R] = {
+		{0, 1, 0},
+		{2, 0, 0},
+		{3, 0, 2},
+		{2, 1, 1},
+		{0, 0, 2}
+	};
 
-	for(int i = 0; i < b->pro_nums; i++)
-		for(int j = 0; j < b->res_nums; j++)
-			b->need[i][j] = b->max[i][j] - b->allocate[i][j];
+	// 初始化 available 数组
+	for (int i = 0; i < b->res_nums; i++) {
+		b->available[i] = t_available[i];
+	}
+
+
+	for(int i = 0; i < b->pro_nums; i++) {
+		for(int j = 0; j < b->res_nums; j++) {
+			b->max[i][j] = t_max[i][j];
+			b->allocate[i][j] = t_allocate[i][j];
+			b->need[i][j] = t_max[i][j] - t_allocate[i][j];
+		}
+	}
 }
+
+void check_T0_env(Banker b);
 
 void display_matrix(Banker b, char mat_typ) {
 	switch (mat_typ) {
 		case 'a': {
-			for(int j = 0; j < b.res_nums; j++)
-				printf("resource %c: %d unit; ",j + 'A', b.available[j]);
+			printf("%5s", "AVL");
+			for(int i = 0; i < b.res_nums; i++)
+				printf("%5c", i + 'A');
+			printf("\n%5c", BLANK);
+			for(int i = 0; i < b.res_nums; i++)
+				printf("%5d", b.available[i]);
+			putchar('\n');
 			break;
 		}
 		case 'm': {
+			printf("%5s", "MAX");
 			for(int i = 0; i < b.res_nums; i++)
-				printf("%5c %5c", BLANK, i + 'A');
-			for(int i = 0; i < b.pro_nums; i++, printf("\n"))
+				printf("%5c", i + 'A');
+			putchar('\n');
+			for(int i = 0; i < b.pro_nums; i++, printf("\n")) {
+				printf("%5d", i);
 				for(int j = 0; j < b.res_nums; j++) {
-					printf("%5d", i);
 					printf("%5d", b.max[i][j]);
 				}
+			}
 			break;
 		}
 		case 'l': {
-			for(int i = 0; i < b.pro_nums; i++, printf("\n"))
+			printf("%5s", "ALT");
+			for(int i = 0; i < b.res_nums; i++)
+				printf("%5c", i + 'A');
+			putchar('\n');
+			for(int i = 0; i < b.pro_nums; i++, printf("\n")) {
+				printf("%5d", i);
 				for(int j = 0; j < b.res_nums; j++) {
-					printf("%5d", i);
-					printf("%5d",  b.allocate[i][j]);
+					printf("%5d", b.allocate[i][j]);
 				}
+			}
 			break;
 		}
 		case 'n': {
-			for(int i = 0; i < b.pro_nums; i++, printf("\n"))
+			printf("%5s", "NED");
+			for(int i = 0; i < b.res_nums; i++)
+				printf("%5c", i + 'A');
+			putchar('\n');
+			for(int i = 0; i < b.pro_nums; i++, printf("\n")) {
+				printf("%5d", i);
 				for(int j = 0; j < b.res_nums; j++) {
-					printf("%5d", i);
 					printf("%5d", b.need[i][j]);
 				}
+			}
 			break;
 		}
 		default:
@@ -133,24 +175,11 @@ void display_matrix(Banker b, char mat_typ) {
 }
 
 int main() {
-	int init_res[] = {10, 5, 7};
-	int max[P][R] = {
-		{7, 5, 3},
-		{3, 2, 2},
-		{9, 0, 2},
-		{2, 2, 2},
-		{4, 3, 3}
-	};
-	int allocate[P][R] = {
-		{0, 1, 0},
-		{2, 0, 0},
-		{3, 0, 2},
-		{2, 1, 1},
-		{0, 0, 2}
-	};
-
 	Banker b;
-	init_banker(&b, P, R, init_res);
-	create_T0_environment(&b, max, allocate);
+	init_banker(&b, P, R);
+	create_T0_env(&b);
+	display_matrix(b, 'a');
 	display_matrix(b, 'm');
+	display_matrix(b, 'l');
+	display_matrix(b, 'n');
 }
