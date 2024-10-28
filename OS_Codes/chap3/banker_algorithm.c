@@ -116,7 +116,68 @@ void create_T0_env(Banker * b) {
 	}
 }
 
-void check_T0_env(Banker b);
+int banker_safety_check(Banker b, int * safety_list) {
+	int * work = calloc(b.res_nums, sizeof(int));
+	memcpy(work, b.available, sizeof(int) * b.res_nums);
+	int * finish = calloc(b.pro_nums, sizeof(int));
+
+	int all_finish = 0;
+	int safety_list_pos = 0;
+	while(!all_finish) {
+		all_finish = 1;
+		for(int i = 0; i < b.pro_nums; i++) {
+			if(finish[i] == 0) {
+				int allocate_flag = 1;
+				for(int j = 0; j < b.res_nums; j++)
+					if(b.need[i][j] > work[j]) {
+						allocate_flag = 0;
+						break;
+					}
+
+				if(allocate_flag) {
+					for (int j = 0; j < b.res_nums; j++) {
+						work[j] += b.allocate[i][j];
+					}
+					safety_list[safety_list_pos++] = i;
+					finish[i] = 1;
+					all_finish = 0;
+				}
+			}
+		}
+	}
+
+	for(int i = 0; i < b.pro_nums; i++)
+		if(finish[i] == 0)
+			return 0;
+	return 1;
+
+}
+
+int * banker_request(Banker * b, Banker tmp, int pid, int * request) {
+	// 检查request和need
+	for(int j = 0; j < b->res_nums; j ++)
+		if(b->need[pid][j] < request[j])
+			return NULL;
+	// 检查request和available
+	for(int j = 0; j < b->res_nums; j ++)
+		if(b->available[j] < request[j])
+			return NULL;
+	// 尝试性分配
+	for(int j = 0; j < tmp.res_nums; j++) {
+		tmp.available[j] -= request[j];
+		tmp.allocate[pid][j] += request[j];
+		tmp.need[pid][j] -= request[j];
+	}
+	// 安全检查
+	int * res = calloc(b->pro_nums, sizeof(int));
+	int flag = banker_safety_check(tmp, res);
+	if(flag) {
+		*b = tmp;
+		return res;
+	}
+	return NULL;
+
+}
 
 void display_matrix(Banker b, char mat_typ) {
 	switch (mat_typ) {
@@ -182,4 +243,41 @@ int main() {
 	display_matrix(b, 'm');
 	display_matrix(b, 'l');
 	display_matrix(b, 'n');
+
+	int safety_list[P];
+	printf("T0 status is %s\n", banker_safety_check(b, safety_list) == 1 ? "true" : "false");
+	for(int i = 0; i < b.pro_nums; i++)
+		printf("%d ", safety_list[i]);
+	putchar('\n');
+
+	printf("now pid 1 request\n");
+	int req1[] = {1, 0, 2};
+	int * res1 = banker_request(&b, b, 1, req1);
+	if(res1 != NULL) {
+		printf("pid 1 requested successfully\n");
+		for(int i = 0; i < b.pro_nums; i++)
+			printf("%d ", res1[i]);
+		putchar('\n');
+		display_matrix(b, 'a');
+		display_matrix(b, 'm');
+		display_matrix(b, 'l');
+		display_matrix(b, 'n');
+	}
+	else
+		printf("pid 1 requested failed\n");
+	printf("now pid 4 request\n");
+	int req4[] = {1, 0, 2};
+	int * res4 = banker_request(&b, b, 4, req1);
+	if(res4 != NULL) {
+		printf("pid 4 requested successfully\n");
+		for(int i = 0; i < b.pro_nums; i++)
+			printf("%d ", res4[i]);
+		putchar('\n');
+		display_matrix(b, 'a');
+		display_matrix(b, 'm');
+		display_matrix(b, 'l');
+		display_matrix(b, 'n');
+	}
+	else
+		printf("pid 4 requested failed\n");
 }
