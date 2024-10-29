@@ -1,21 +1,3 @@
 # ninja log v6
-202	431	7515532994837616	OS_Codes.exe	4bab5c3499a66b6c
-4	201	7515532992861025	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-5	218	7517821979291367	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-218	456	7517821981423967	OS_Codes.exe	4bab5c3499a66b6c
-29	3078	7517853257997874	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-3078	5731	7517853288489455	OS_Codes.exe	4bab5c3499a66b6c
-4	184	7517856729149535	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-184	400	7517856730949572	OS_Codes.exe	4bab5c3499a66b6c
-5	183	7517860149394436	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-184	432	7517860151184469	OS_Codes.exe	4bab5c3499a66b6c
-5	190	7517874669458512	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-190	433	7517874671308517	OS_Codes.exe	4bab5c3499a66b6c
-6	208	7517877809711024	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-209	460	7517877811741132	OS_Codes.exe	4bab5c3499a66b6c
-5	234	7517888008323541	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-235	488	7517888010620808	OS_Codes.exe	4bab5c3499a66b6c
-9	261	7517888433496563	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-262	517	7517888436026461	OS_Codes.exe	4bab5c3499a66b6c
-5	211	7517889585598052	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
 211	461	7517889587668049	OS_Codes.exe	4bab5c3499a66b6c
+5	211	7517889585598052	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
