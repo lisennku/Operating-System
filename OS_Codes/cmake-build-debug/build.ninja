@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/lisen/CLionProjects/Operating-System/OS_Codes/cm
 
 build cmake_object_order_depends_target_OS_Codes: phony || .
 
-build CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj: C_COMPILER__OS_Codes_unscanned_Debug C$:/Users/lisen/CLionProjects/Operating-System/OS_Codes/chap5/最佳置换算法$ 仿真.c || cmake_object_order_depends_target_OS_Codes
-  DEP_FILE = CMakeFiles\OS_Codes.dir\chap5\最佳置换算法_仿真.c.obj.d
+build CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj: C_COMPILER__OS_Codes_unscanned_Debug C$:/Users/lisen/CLionProjects/Operating-System/OS_Codes/chap5/最近最少使用置换算法$ 仿真.c || cmake_object_order_depends_target_OS_Codes
+  DEP_FILE = CMakeFiles\OS_Codes.dir\chap5\最近最少使用置换算法_仿真.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\OS_Codes.dir
   OBJECT_FILE_DIR = CMakeFiles\OS_Codes.dir\chap5
@@ -63,7 +63,7 @@ build CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj: C_COMPILER_
 #############################################
 # Link the executable OS_Codes.exe
 
-build OS_Codes.exe: C_EXECUTABLE_LINKER__OS_Codes_Debug CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj
+build OS_Codes.exe: C_EXECUTABLE_LINKER__OS_Codes_Debug CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\OS_Codes.dir

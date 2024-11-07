@@ -1,9 +1,6 @@
 # ninja log v6
-188	438	7526641850821393	OS_Codes.exe	849618ea9d09d3ec
+280	585	7526705243490914	OS_Codes.exe	95362b5818362750
+4	279	7526705240730893	CMakeFiles/OS_Codes.dir/chap5/先进先出置换算法_仿真.c.obj	54ac10e14ff490f0
 5	211	7517889585598052	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-3	556	7526664561134508	build.ninja	13189c0e086f5efa
-4	188	7526641848978981	CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj	780b344b978bfa58
-7	330	7526668797043044	CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj	780b344b978bfa58
-331	635	7526668800281671	OS_Codes.exe	849618ea9d09d3ec
+1	552	7526705787368875	build.ninja	13189c0e086f5efa
 4	180	7526678612642625	CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj	780b344b978bfa58
-180	393	7526678614404216	OS_Codes.exe	849618ea9d09d3ec
