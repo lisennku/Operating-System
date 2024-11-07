@@ -5,4 +5,5 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(OS_Codes
 #        main.c
-        chap3/banker_algorithm.c)
+#        chap3/banker_algorithm.c
+        "chap5/最佳置换算法 仿真.c")
