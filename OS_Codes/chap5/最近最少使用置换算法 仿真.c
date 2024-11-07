@@ -72,7 +72,14 @@ void nodeMovedToHead(LRU * lru, PageNode * page) {
 }
 
 // 删除尾指针前的页面
-void nodeDeleteFromTail(LRU * lru);
+void nodeDeleteFromTail(LRU * lru) {
+	PageNode * del = lru->tail->prev;
+
+	del->prev->next = del->next;
+	del->next->prev = del->prev;
+
+	free(del);
+}
 
 // LRU 相关操作
 // 初始化LRU
@@ -92,10 +99,25 @@ LRU * lRUCreate(int blocks, int max_pages) {
 }
 
 // 页面置换
-void lRUExchange(LRU * lru, int page_id);
+void lRUExchange(LRU * lru, int page_id) {
+
+}
 
 // 访问页面
-void lRUAccess(LRU * lru, int page_id);
+void lRUAccess(LRU * lru, int page_id) {
+	if(lru->pages[page_id].in_memory == 1) {
+
+	}
+	else {
+		// 判断是否需要替换
+		if(lru->length < lru->blocks) {
+
+		}
+		else {
+
+		}
+	}
+}
 
 
 

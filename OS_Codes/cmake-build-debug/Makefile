@@ -128,29 +128,29 @@ OS_Codes/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/build
 .PHONY : OS_Codes/fast
 
-chap3/banker_algorithm.obj: chap3/banker_algorithm.c.obj
-.PHONY : chap3/banker_algorithm.obj
+chap5/最近最少使用置换算法_仿真.obj: chap5/最近最少使用置换算法_仿真.c.obj
+.PHONY : chap5/最近最少使用置换算法_仿真.obj
 
 # target to build an object file
-chap3/banker_algorithm.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj
-.PHONY : chap3/banker_algorithm.c.obj
+chap5/最近最少使用置换算法_仿真.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj
+.PHONY : chap5/最近最少使用置换算法_仿真.c.obj
 
-chap3/banker_algorithm.i: chap3/banker_algorithm.c.i
-.PHONY : chap3/banker_algorithm.i
+chap5/最近最少使用置换算法_仿真.i: chap5/最近最少使用置换算法_仿真.c.i
+.PHONY : chap5/最近最少使用置换算法_仿真.i
 
 # target to preprocess a source file
-chap3/banker_algorithm.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.i
-.PHONY : chap3/banker_algorithm.c.i
+chap5/最近最少使用置换算法_仿真.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.i
+.PHONY : chap5/最近最少使用置换算法_仿真.c.i
 
-chap3/banker_algorithm.s: chap3/banker_algorithm.c.s
-.PHONY : chap3/banker_algorithm.s
+chap5/最近最少使用置换算法_仿真.s: chap5/最近最少使用置换算法_仿真.c.s
+.PHONY : chap5/最近最少使用置换算法_仿真.s
 
 # target to generate assembly for a file
-chap3/banker_algorithm.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.s
-.PHONY : chap3/banker_algorithm.c.s
+chap5/最近最少使用置换算法_仿真.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS_Codes.dir\build.make CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.s
+.PHONY : chap5/最近最少使用置换算法_仿真.c.s
 
 # Help Target
 help:
@@ -161,9 +161,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... OS_Codes
-	@echo ... chap3/banker_algorithm.obj
-	@echo ... chap3/banker_algorithm.i
-	@echo ... chap3/banker_algorithm.s
+	@echo ... chap5/最近最少使用置换算法_仿真.obj
+	@echo ... chap5/最近最少使用置换算法_仿真.i
+	@echo ... chap5/最近最少使用置换算法_仿真.s
 .PHONY : help
 
 
