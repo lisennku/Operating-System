@@ -1,6 +1,15 @@
 # ninja log v6
 280	585	7526705243490914	OS_Codes.exe	95362b5818362750
-4	279	7526705240730893	CMakeFiles/OS_Codes.dir/chap5/先进先出置换算法_仿真.c.obj	54ac10e14ff490f0
-5	211	7517889585598052	CMakeFiles/OS_Codes.dir/chap3/banker_algorithm.c.obj	2a3064b21954a53d
-1	552	7526705787368875	build.ninja	13189c0e086f5efa
-4	180	7526678612642625	CMakeFiles/OS_Codes.dir/chap5/最佳置换算法_仿真.c.obj	780b344b978bfa58
+1	552	7527361326833517	build.ninja	13189c0e086f5efa
+3	186	7527361412990937	CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj	7d7775d7de17abe4
+187	410	7527361414834945	OS_Codes.exe	183745b2f770c5c2
+6	185	7527362221549185	CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj	7d7775d7de17abe4
+186	384	7527362223341688	OS_Codes.exe	183745b2f770c5c2
+6	226	7527363161617357	CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj	7d7775d7de17abe4
+227	487	7527363163823593	OS_Codes.exe	183745b2f770c5c2
+5	195	7527363558075689	CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj	7d7775d7de17abe4
+196	416	7527363559994434	OS_Codes.exe	183745b2f770c5c2
+8	267	7527370528120987	CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj	7d7775d7de17abe4
+268	540	7527370530721044	OS_Codes.exe	183745b2f770c5c2
+5	200	7527371210495150	CMakeFiles/OS_Codes.dir/chap5/最近最少使用置换算法_仿真.c.obj	7d7775d7de17abe4
+201	428	7527371212451452	OS_Codes.exe	183745b2f770c5c2

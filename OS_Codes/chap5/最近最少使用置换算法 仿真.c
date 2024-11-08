@@ -12,6 +12,18 @@
 #include <stdlib.h>
 #include <limits.h>
 
+/*
+ * 使用双向链表来模拟
+ * 初始化时LRU里的pages为全部页面结点的顺序存储
+ * 访问页面后更改对应结点的前后指针
+ * 通过head/tail指针组成一个长度为block的内存模拟
+ * 每访问一个页面
+ *	如果在内存中 将该结点移动到头结点后
+ *	不在内存中
+ *		内存未满 插入到头结点后
+ *		内存已满 移出尾结点前的页面结点 并将新页面结点插入到头结点后
+ */
+
 typedef struct PageNode {
 	int page_id;
 	int in_memory;
@@ -72,13 +84,29 @@ void nodeMovedToHead(LRU * lru, PageNode * page) {
 }
 
 // 删除尾指针前的页面
-void nodeDeleteFromTail(LRU * lru) {
+PageNode * nodeDeleteFromTail(LRU * lru) {
 	PageNode * del = lru->tail->prev;
 
 	del->prev->next = del->next;
 	del->next->prev = del->prev;
 
-	free(del);
+	del->next = del->prev = NULL;
+
+	return del;
+}
+
+void display_memory(LRU lru) {
+	PageNode * head = lru.head->next;
+	PageNode * tail = lru.tail;
+
+	while(head != tail) {
+		if(head->next != tail)
+			printf("%d ", head->page_id);
+		else
+			printf("%d\n", head->page_id);
+
+		head = head->next;
+	}
 }
 
 // LRU 相关操作
@@ -90,35 +118,68 @@ LRU * lRUCreate(int blocks, int max_pages) {
 
 	lru->blocks = blocks;
 	lru->length = lru->s = lru->f = 0;
-	lru->pages = calloc(max_pages, sizeof(PageNode));
+	lru->pages = calloc(max_pages+1, sizeof(PageNode));
 
-	lru->head = lru->tail = NULL;
+	lru->head = calloc(1, sizeof(PageNode));
+	lru->head->in_memory = lru->head->page_id = -1;
 
-	for(int i = 0; i < max_pages; i++)
+	lru->tail = calloc(1, sizeof(PageNode));
+	lru->tail->in_memory = lru->tail->page_id = -1;
+
+	lru->head->prev = NULL;
+	lru->head->next = lru->tail;
+
+	lru->tail->next = NULL;
+	lru->tail->prev = lru->head;
+
+	for(int i = 0; i <= max_pages; i++)
 		lru->pages[i] = nodeCreate(i);
+
+	return lru;
 }
 
-// 页面置换
-void lRUExchange(LRU * lru, int page_id) {
-
-}
+// // 页面置换
+// void lRUExchange(LRU * lru, int page_id) {
+//
+// }
 
 // 访问页面
 void lRUAccess(LRU * lru, int page_id) {
+	printf("Now accessing page num %d\n", page_id);
 	if(lru->pages[page_id].in_memory == 1) {
-
+		printf("Page num %d is already in memory\n", page_id);
+		nodeMovedToHead(lru, &lru->pages[page_id]);
+		display_memory(*lru);
 	}
 	else {
 		// 判断是否需要替换
-		if(lru->length < lru->blocks) {
-
+		if(lru->length < lru->blocks) {  // 内存未满
+			printf("Memory is not full ");
+			lru->length ++;
+			nodeInsertToHead(lru, &lru->pages[page_id]);
+			display_memory(*lru);
 		}
-		else {
-
+		else { // 内存已满
+			PageNode * del =  nodeDeleteFromTail(lru);
+			del->in_memory = 0;
+			printf("Memory is full and page num %d will be removed\n", del->page_id);
+			nodeInsertToHead(lru, &lru->pages[page_id]);
+			display_memory(*lru);
 		}
+		lru->pages[page_id].in_memory = 1;
 	}
 }
 
+
+int main() {
+	// int pages[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
+	int pages[] = {4, 7, 0, 7, 1, 0, 1, 2, 1, 2, 6};
+	int size = sizeof(pages) / sizeof(pages[0]);
+
+	LRU * lru = lRUCreate(5, get_max_page_num(pages, size));
+	for(int i = 0; i < size; i++)
+		lRUAccess(lru, pages[i]);
+}
 
 
 
