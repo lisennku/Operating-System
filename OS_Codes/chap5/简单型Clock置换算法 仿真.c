@@ -98,14 +98,13 @@ void clockAccess(Clock * clock, int page_id) {
 		display_memory(*clock);
 	}
 	else {
-
 		while(1) {
 			if(clock->ptr == clock->head) {
 				clock->ptr = clock->head->next;
 				continue;
 			}
 			if(clock->ptr->used == 0) {
-				printf("Memory is full and page num %d will be removed\n", tmp->page_id);
+				printf("Memory is full and page num %d will be removed\n", clock->ptr->page_id);
 				clock->ptr->page_id = page_id;
 				clock->ptr->used = 1;
 				display_memory(*clock);
